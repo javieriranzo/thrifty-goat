@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class HomeScreenComponent {
 
+  constructor() { }
+
+  ngOnInit(): void {
+
+    // Agrega evento para el botón de cierre de sesión
+
+  }
 }

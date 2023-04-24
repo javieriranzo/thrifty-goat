@@ -1,0 +1,34 @@
+.contenedor {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    /* Establecemos la altura al 100% del viewport */
+}
+
+.mitad1 {
+    width: 50%;
+    height: 100%;
+    border: 2px solid red;
+    /* Marcamos la sección con borde rojo */
+}
+
+.mitad2 {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    border: 2px solid red;
+    /* Marcamos la sección con borde rojo */
+}
+
+.azul {
+    flex: 1;
+    border: 2px solid blue;
+    /* Marcamos el primer sub-div con borde azul */
+}
+
+.verde {
+    flex: 1;
+    border: 2px solid green;
+    /* Marcamos el segundo sub-div con borde verde */
+}
