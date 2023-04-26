@@ -13,6 +13,8 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { NavbarMenuComponent } from './navbar-menu/navbar-menu.component';
 import { FormsModule } from '@angular/forms';
 import { PopUpLogoutComponent } from './pop-up-logout/pop-up-logout.component';
+import { DxButtonModule } from 'devextreme-angular/ui/button';
+import { DxDataGridModule } from 'devextreme-angular/ui/data-grid';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { PopUpLogoutComponent } from './pop-up-logout/pop-up-logout.component';
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    DxButtonModule,
+    DxDataGridModule
   ],
   providers: [],
   bootstrap: [AppComponent]

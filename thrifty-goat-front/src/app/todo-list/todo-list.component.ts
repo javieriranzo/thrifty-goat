@@ -7,21 +7,6 @@ import { Component } from '@angular/core';
 })
 export class TodoListComponent {
 
-  nuevaTarea = {
-    nombre: '',
-    descripcion: '',
-    prioridad: ''
-  };
-
-  tareas = [];
-
-  agregarTarea() {
-    this.nuevaTarea = {
-      nombre: '',
-      descripcion: '',
-      prioridad: ''
-    };
-  }
 
 }
 

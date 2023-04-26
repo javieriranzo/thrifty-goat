@@ -1,34 +1,84 @@
-.contenedor {
+h1 {
+    text-align: center;
+    margin: 50px;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid black;
+}
+
+.principal-content {
+    margin: 50px;
+}
+
+label {
+    height: 40px;
     display: flex;
-    flex-direction: row;
-    height: 100vh;
-    /* Establecemos la altura al 100% del viewport */
+    align-items: center;
 }
-
-.mitad1 {
-    width: 50%;
-    height: 100%;
-    border: 2px solid red;
-    /* Marcamos la sección con borde rojo */
-}
-
-.mitad2 {
+input,
+select {
+    height: 40px;
     display: flex;
-    flex-direction: column;
-    width: 50%;
-    height: 100%;
-    border: 2px solid red;
-    /* Marcamos la sección con borde rojo */
+    align-items: center;
 }
 
-.azul {
-    flex: 1;
-    border: 2px solid blue;
-    /* Marcamos el primer sub-div con borde azul */
+#initDateFiltersInput,
+#endDateFiltersInput
+{
+    width: 100%;
 }
 
-.verde {
-    flex: 1;
-    border: 2px solid green;
-    /* Marcamos el segundo sub-div con borde verde */
+#addTaskBtn, #clearTaskFieldsBtn {
+    margin-right: 5px;
+    margin-top: 10px;
+    display: inline;
+    justify-content: left;
+}
+
+.filters-and-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    grid-template-columns: repeat(7, auto);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flow-root;
+    margin-top: 10px;
+}
+
+.filters-and-actions label,
+.filters-and-actions input,
+.filters-and-actions select {
+    margin: 0;
+}
+
+.filters-and-actions button {
+    margin-left: 5px;
+}
+
+#taskTable {
+    vertical-align: middle;
+    text-align: justify;
+}
+
+#taskTable th:first-child,
+#taskTable td:first-child {
+    width: 5%;
+}
+
+#taskTable td:nth-child(2) {
+    width: 60%
+}
+
+#taskTable td:nth-child(3) {
+    width: auto;
+}
+
+#taskTable td:nth-child(4) {
+    width: 15%
 }
