@@ -1,130 +1,137 @@
 <!-- TITLE PAGE -->
 
-<body>
-    <div id="titleContent" class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <h1>LISTADO DE TAREAS</h1>
-                <hr>
-            </div>
+
+<div id="titleContent" class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h1>LISTADO DE TAREAS</h1>
+            <hr>
         </div>
     </div>
+</div>
 
-    <!-- PRINCIPAL CONTENT -->
-    <div id="principalContent" class="principal-content">
-        <!-- Filters section -->
-        <fieldset>
-            <legend>
-                <h2>Filtros y acciones</h2>
-            </legend>
-            <form id="filtersAndActionsTaskForm">
-                <div class="filters-and-actions">
-                    <label id="taskIdFiltersLabel" for="taskIdFiltersInput">ID:</label>
-                    <input id="taskIdFiltersInput" type="number" min="0" maxlength="6" class="form-control">
-                    <label id="taskNameFiltersLabel" for="taskNameFiltersInput">Nombre:</label>
-                    <input id="taskNameFiltersInput" type="text" class="form-control">
-                    <label id="initDateFiltersLabel" for="initDateFiltersInput">Fecha desde:</label>
-                    <input id="initDateFiltersInput" type="date" value="2023-04-26" class="form-control">
-                    <label id="endDateFiltersLabel" for="endDateFiltersInput">Fecha hasta:</label>
-                    <input id="endDateFiltersInput" type="date" value="2023-04-26" class="form-control">
-                    <label id="taskPriorityFiltersLabel" for="taskPriorityFiltersSelect">Prioridad:</label>
-                    <select id="taskPriorityFiltersSelect" class="form-select">
-                        <option value="critica">Crítica</option>
-                        <option value="alta">Alta</option>
-                        <option value="media">Media</option>
-                        <option value="baja">Baja</option>
-                    </select>
-                    <button id="applyFiltersTaskBtn" class="btn btn-primary"><i class="fa-solid fa-filter"></i></button>
-                    <button id="clearFiltersTaskBtn" class="btn btn-warning"><i
-                            class="fa-solid fa-filter-circle-xmark"></i></button>
-                    <button id="addNewTaskFiltersBtn" class="btn btn-success"><i
-                            class="fa-solid fa-file-circle-plus"></i></button>
-                    <button id="exportTaskListPdfBtn" class="btn btn-danger"><i
-                            class="fa-solid fa-file-pdf"></i></button>
+<!-- PRINCIPAL CONTENT -->
+<div id="principalContent" class="principal-content">
+    <!-- Filters section -->
+    <fieldset>
+        <legend>
+            <h2>Filtros y acciones</h2>
+        </legend>
+        <form id="filtersAndActionsTaskForm">
+            <div class="filters-and-actions">
+                <label id="taskIdFiltersLabel" for="taskIdFiltersInput">ID:</label>
+                <input id="taskIdFiltersInput" type="number" min="0" maxlength="6" class="form-control">
+                <label id="taskNameFiltersLabel" for="taskNameFiltersInput">Nombre:</label>
+                <input id="taskNameFiltersInput" type="text" class="form-control">
+                <label id="initDateFiltersLabel" for="initDateFiltersInput">Fecha desde:</label>
+                <input id="initDateFiltersInput" type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control">
+                <label id="endDateFiltersLabel" for="endDateFiltersInput">Fecha hasta:</label>
+                <input id="endDateFiltersInput" type="date" value="<?php echo date('Y-m-d'); ?>" class="form-control">
+                <label id="taskPriorityFiltersLabel" for="taskPriorityFiltersSelect">Prioridad:</label>
+                <select id="taskPriorityFiltersSelect" class="form-select">
+                    <option value="critica">Crítica</option>
+                    <option value="alta">Alta</option>
+                    <option value="media">Media</option>
+                    <option value="baja">Baja</option>
+                </select>
+                <button id="applyFiltersTaskBtn" class="btn btn-primary" data-toggle="tooltip" data-placement="top"
+                    title="Aplicar filtros">
+                    <i class="fa-solid fa-filter"></i>
+                </button>
+                <button id="clearFiltersTaskBtn" class="btn btn-warning" data-toggle="tooltip" data-placement="top"
+                    title="Borrar filtros">
+                    <i class="fa-solid fa-filter-circle-xmark"></i></button>
+                <button (click)="hideAddNewTaskForm()" id="addNewTaskFiltersBtn" class="btn btn-success"
+                    data-toggle="tooltip" data-placement="top" title="Añadir tarea">
+                    <i class="fa-solid fa-file-circle-plus"></i></button>
+                <button id="exportTaskListPdfBtn" class="btn btn-danger" data-toggle="tooltip" data-placement="top"
+                    title="Exportar a PDF">
+                    <i class="fa-solid fa-file-pdf"></i>
+                </button>
+            </div>
+        </form>
+    </fieldset>
+    <!-- Add task section -->
+    <fieldset *ngIf="addNewTaskFormIsVisible">
+        <legend>
+            <h2>Añadir nueva tarea</h2>
+        </legend>
+        <form id="addNewTaskFrom">
+            <div class="form-group row">
+                <label id="taskNameLabel" for="taskNameInput">Nombre tarea:</label>
+                <div>
+                    <input id="taskNameInput" type="text" class="form-control"
+                        placeholder="Ingrese el nombre de la tarea" required>
                 </div>
-            </form>
-        </fieldset>
-        <!-- Add task section -->
-        <fieldset>
-            <legend>
-                <h2>Añadir nueva tarea</h2>
-            </legend>
-            <form id="addNewTaskForm">
-                <div class="form-group row">
-                    <label id="taskNameLabel" for="taskNameInput">Nombre tarea:</label>
-                    <div>
-                        <input id="taskNameInput" type="text" class="form-control"
-                            placeholder="Ingrese el nombre de la tarea">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <label id="taskDateLabel" for="taskDateInput">Fecha:</label>
-                        <input id="taskDateInput" type="date" class="form-control" value="<?php echo date('Y-m-d'); ?>">
-                    </div>
-                    <div class="col">
-                        <label id="taskPriorityLabel" for="taskPrioritySelect">Prioridad:</label>
-                        <select id="taskPrioritySelect" class="form-select">
-                            <option>Crítica</option>
-                            <option>Alta</option>
-                            <option>Media</option>
-                            <option>Baja</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label id="taskHoursLabel" for="taskHoursInput" class="col-sm-2 col-form-label">Horas:</label>
-                        <input id="taskHoursInput" type="number" class="form-control" value="0">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label id="taskDescriptionLabel" for="taskDescriptionInput">Descripción:</label>
-                    <div>
-                        <textarea id="taskDescriptionInput" class="form-control" placeholder="Descripción de tarea"
-                            maxlength="140"></textarea>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label id="taskDateLabel" for="taskDateInput">Fecha:</label>
+                    <input id="taskDateInput" type="date" class="form-control" value="<?php echo date('Y-m-d'); ?>" required>
                 </div>
                 <div class="col">
-                    <button id="addTaskBtn" type="submit" class="btn btn-success">Agregar tarea</button>
-                    <button id="clearTaskFieldsBtn" type="submit" class="btn btn-warning">Limpiar campos</button>
+                    <label id="taskPriorityLabel" for="taskPrioritySelect">Prioridad:</label>
+                    <select id="taskPrioritySelect" class="form-select">
+                        <option>Crítica</option>
+                        <option>Alta</option>
+                        <option>Media</option>
+                        <option>Baja</option>
+                    </select>
                 </div>
-            </form>
+                <div class="col">
+                    <label id="taskHoursLabel" for="taskHoursInput" class="col-sm-2 col-form-label">Horas:</label>
+                    <input id="taskHoursInput" type="number" class="form-control" value="0" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label id="taskDescriptionLabel" for="taskDescriptionInput">Descripción:</label>
+                <div>
+                    <textarea id="taskDescriptionInput" class="form-control" placeholder="Descripción de tarea"
+                        maxlength="140" required></textarea>
+                </div>
+            </div>
+            <div>
+                <button id="addTaskBtn" type="submit" class="btn btn-success">Agregar tarea</button>
+                <button id="clearTaskFieldsBtn" type="submit" class="btn btn-warning">Limpiar campos</button>
+            </div>
+        </form>
+    </fieldset>
+    <!-- Table tasks -->
+    <div id="taskTableSection">
+        <fieldset>
+            <legend>
+                <h2>Listado de tareas</h2>
+            </legend>
+            <table id="taskTable" class="table table-bordered table-striped table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>TAREA</th>
+                        <th>HORAS</th>
+                        <th>FECHA</th>
+                        <th>PRIORIDAD</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>34234</td>
+                        <td>Tarea 1</td>
+                        <td>8 horas</td>
+                        <td>10/05/2023</td>
+                        <td>Alta</td>
+                        <td>
+                            <button id="editTaskBtn" class="btn btn-primary" data-toggle="tooltip" data-placement="top"
+                                title="Editar tarea"><i class="fa-solid fa-pencil"></i></button>
+                            <button id="deleteTaskBtn" class="btn btn-danger" data-toggle="tooltip" data-placement="top"
+                                title="Eliminar tarea"><i class="fa-solid fa-trash"></i></button>
+                            <button id="showDetailsTaskBtn" class="btn btn-success" data-toggle="tooltip"
+                                data-placement="top" title="Información tarea"><i
+                                    class="fa-solid fa-magnifying-glass"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </fieldset>
-        <!-- Table tasks -->
-        <div id="taskTableSection">
-            <fieldset>
-                <legend>
-                    <h2>Listado de tareas</h2>
-                </legend>
-                <table id="taskTable" class="table table-bordered table-striped table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>TAREA</th>
-                            <th>HORAS</th>
-                            <th>FECHA</th>
-                            <th>PRIORIDAD</th>
-                            <th>ACCIONES</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>34234</td>
-                            <td>Tarea 1</td>
-                            <td>8 horas</td>
-                            <td>10/05/2023</td>
-                            <td>Alta</td>
-                            <td>
-                                <button id="editTaskBtn" class="btn btn-primary"><i
-                                        class="fa-solid fa-pencil"></i></button>
-                                <button id="deleteTaskBtn" class="btn btn-danger"><i
-                                        class="fa-solid fa-trash"></i></button>
-                                <button id="showDetailsTaskBtn" class="btn btn-success"><i
-                                        class="fa-solid fa-magnifying-glass"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </fieldset>
-        </div>
     </div>
-</body>
+</div>

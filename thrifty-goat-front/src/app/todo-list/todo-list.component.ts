@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class TodoListComponent {
 
+  addNewTaskFormIsVisible = false; 
+
+  hideAddNewTaskForm() {
+    this.addNewTaskFormIsVisible = this.addNewTaskFormIsVisible == false ? true : false;
+  }
 
 }
 
