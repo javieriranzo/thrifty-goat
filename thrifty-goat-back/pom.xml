@@ -6,7 +6,7 @@
   	<parent>
    		<groupId>org.springframework.boot</groupId>
     	<artifactId>spring-boot-starter-parent</artifactId>
-    	<version>2.5.5</version> <!-- Última versión de Spring Boot a la fecha de mi última actualización en septiembre de 2021 -->
+    	<version>2.5.15</version>
     </parent>
 	<dependencies>
 		<dependency>
