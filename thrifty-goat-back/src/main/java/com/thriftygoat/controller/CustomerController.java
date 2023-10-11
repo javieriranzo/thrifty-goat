@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.thriftygoat.model.Address;
 import com.thriftygoat.model.Customer;
@@ -23,7 +24,12 @@ public class CustomerController {
 	@Autowired
 	CustomerServiceImpl customerServiceImpl; 
 	
-	@GetMapping("customers/getAllCustomers")
+	@GetMapping("/")
+    public String home() {
+        return "¡Bienvenido a mi aplicación!";
+    }
+	
+	@GetMapping("/customers/getAllCustomers")
 	public ResponseEntity<List<Customer>> getAllCustomers() {
 		List<Customer> allCustomers = customerServiceImpl.findAllCustomers();
 		try {
