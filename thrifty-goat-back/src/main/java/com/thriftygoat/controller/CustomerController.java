@@ -12,24 +12,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.thriftygoat.model.Address;
 import com.thriftygoat.model.Customer;
 import com.thriftygoat.service.CustomerServiceImpl;
+import com.thriftygoat.utils.ResponseFormat;
+import com.thriftygoat.utils.Utils;
 
 @Controller
 public class CustomerController {
-	
+
 	@Autowired
-	CustomerServiceImpl customerServiceImpl; 
-	
+	CustomerServiceImpl customerServiceImpl;
+
 	@GetMapping("/")
-    public String home() {
-        return "¡Bienvenido a mi aplicación!";
-    }
-	
-	@GetMapping("/customers/getAllCustomers")
+	public String home() {
+		return "¡Bienvenido a mi aplicación!";
+	}
+
+	@GetMapping("/customer/getAllCustomers")
 	public ResponseEntity<List<Customer>> getAllCustomers() {
 		List<Customer> allCustomers = customerServiceImpl.findAllCustomers();
 		try {
@@ -38,24 +38,25 @@ public class CustomerController {
 			return new ResponseEntity<List<Customer>>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
-	@GetMapping("/getCustomerById/{id}")
-	public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
+
+	@GetMapping("/customer/getCustomerById/{id}")
+	public ResponseEntity<ResponseFormat<Customer>> getCustomerById(@PathVariable Long id) {
 		Customer customerById = customerServiceImpl.findCustomerById(id);
+		ResponseFormat<Customer> responseFormat = new ResponseFormat<Customer>();
 		try {
 			if (checkIfIdIsNotValid(id)) {
-				return new ResponseEntity<Customer>(HttpStatus.BAD_REQUEST);
+				responseFormat.createBadRequestResponse(Utils.BAD_REQUEST_MESSAGE);
 			}
 			if (checkIfCustomerNotExists(id)) {
-				return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND);
-			} 
-			return new ResponseEntity<Customer>(customerById, HttpStatus.OK);
+				responseFormat.createNotFoundResponse(Utils.NOT_FOUND_MESSAGE);
+			}
 		} catch (Exception e) {
-			return new ResponseEntity<Customer>(HttpStatus.INTERNAL_SERVER_ERROR);
+			return responseFormat.createInternalServerErrorResponse(Utils.INTERNAL_SERVER_ERROR);
 		}
+		return responseFormat.createOkResponse(customerById);
 	}
-	
-	@PostMapping("/createCustomer")
+
+	@PostMapping("/customer/createCustomer")
 	public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
 		Customer newCustomer = customerServiceImpl.createCustomer(customer);
 		try {
@@ -67,10 +68,10 @@ public class CustomerController {
 			return new ResponseEntity<Customer>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
-	@PutMapping("/updateCustomer/{id}")
+
+	@PutMapping("/customer/updateCustomer/{id}")
 	public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
-		Customer customerById = customerServiceImpl.findCustomerById(id); 
+		Customer customerById = customerServiceImpl.findCustomerById(id);
 		try {
 			if (checkIfIdIsNotValid(id)) {
 				return new ResponseEntity<Customer>(HttpStatus.BAD_REQUEST);
@@ -78,60 +79,54 @@ public class CustomerController {
 			if (checkIfCustomerNotExists(id)) {
 				return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND);
 			}
-			customerById.setFirstName(customer.getFirstName()); 
+			customerById.setFirstName(customer.getFirstName());
 			customerById.setLastName(customer.getLastName());
 			customerById.setDni(customer.getDni());
 			customerById.setEmail(customer.getEmail());
 			customerById.setPhoneNumber(customer.getPhoneNumber());
-			customerById.setAddress(customer.getAddress());
+			customerById.setStreet(customer.getStreet());
+			customerById.setNumber(customer.getNumber());
+			customerById.setPostalCode(customer.getPostalCode());
+			customerById.setCity(customer.getCity());
+			customerById.setState(customer.getState());
+			customerById.setCountry(customer.getCountry());
 			Customer updatedCustomer = customerServiceImpl.createCustomer(customerById);
-			return new ResponseEntity<Customer>(updatedCustomer, HttpStatus.CREATED); 
+			return new ResponseEntity<Customer>(updatedCustomer, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<Customer>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
-	@DeleteMapping("/deleteCustomer/{id}")
-	public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
+
+	@DeleteMapping("/customer/deleteCustomer/{id}")
+	public ResponseEntity<String> deleteCustomer(@PathVariable(value = "id", required = true) Long id) {
 		try {
-			if (checkIfIdIsNotValid(id)) {
+			if (id == null || checkIfIdIsNotValid(id)) {
 				return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 			}
-			if(checkIfCustomerNotExists(id)) {
+			if (checkIfCustomerNotExists(id)) {
 				return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 			}
-			customerServiceImpl.deleteCustomer(id); 
-			return new ResponseEntity<String>("Cliente eliminado correctamente", HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+		customerServiceImpl.deleteCustomer(id);
+		return new ResponseEntity<String>("Cliente eliminado correctamente", HttpStatus.OK);
 	}
-	
+
 	private boolean checkIfIdIsNotValid(Long id) {
-		return id == null || id <= 0; 
+		return id <= 0 || !(id instanceof Long);
 	}
-	
+
 	private boolean checkIfCustomerNotExists(Long id) {
-		Customer existCustomer = customerServiceImpl.findCustomerById(id); 
-		return existCustomer == null; 
+		Customer existCustomer = customerServiceImpl.findCustomerById(id);
+		return existCustomer == null;
 	}
-	
+
 	private boolean hasCustomerNullFields(Customer customer) {
-		return customer.getFirstName() == null ||
-			   customer.getLastName() == null ||
-			   customer.getDni() == null ||
-			   customer.getEmail() == null ||
-			   customer.getPhoneNumber() == null ||
-			   hasCustomerNullFields(customer.getAddress());
+		return customer.getFirstName() == null || customer.getLastName() == null || customer.getDni() == null
+				|| customer.getEmail() == null || customer.getPhoneNumber() == null || customer.getStreet() == null
+				|| customer.getNumber() == null || customer.getPostalCode() == null || customer.getCity() == null
+				|| customer.getState() == null || customer.getCountry() == null;
 	}
-	
-	private boolean hasCustomerNullFields(Address address) {
-		return address.getStreet() == null ||
-			   address.getNumber() == null ||
-			   address.getPostalCode() == null ||
-			   address.getCity() == null ||
-			   address.getState() == null ||
-			   address.getCountry() == null;
-	}
-		
+
 }

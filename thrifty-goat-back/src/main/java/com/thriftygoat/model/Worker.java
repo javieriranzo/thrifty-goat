@@ -4,25 +4,22 @@ import java.util.Date;
 
 public class Worker {
 
-	private Long id; 
-	private String firstName; 
-	private String lastName; 
-	private Address workerAddress; 
-	private Date birthdayDate; 
-	private Date startDateAtWork; 
-	private String email; 
-	private String phoneNumber; 
+	private Long id;
+	private String firstName;
+	private String lastName;
+	private Date startDateAtWork;
+	private String email;
+	private String phoneNumber;
 	private WorkerCategory workerCategory;
-	
-	public Worker() {}
-	
-	public Worker(Long id, String firstName, String lastName, Address workerAddress, Date birthdayDate,
-			Date startDateAtWork, String email, String phoneNumber, WorkerCategory jobTitle) {
+
+	public Worker() {
+	}
+
+	public Worker(Long id, String firstName, String lastName, Date startDateAtWork, String email, String phoneNumber,
+			WorkerCategory jobTitle) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.workerAddress = workerAddress;
-		this.birthdayDate = birthdayDate;
 		this.startDateAtWork = startDateAtWork;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
@@ -51,22 +48,6 @@ public class Worker {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public Address getWorkerAddress() {
-		return workerAddress;
-	}
-
-	public void setWorkerAddress(Address workerAddress) {
-		this.workerAddress = workerAddress;
-	}
-
-	public Date getBirthdayDate() {
-		return birthdayDate;
-	}
-
-	public void setBirthdayDate(Date birthdayDate) {
-		this.birthdayDate = birthdayDate;
 	}
 
 	public Date getStartDateAtWork() {
@@ -99,6 +80,6 @@ public class Worker {
 
 	public void setJobTitle(WorkerCategory jobTitle) {
 		this.workerCategory = jobTitle;
-	} 
-	
+	}
+
 }
