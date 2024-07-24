@@ -1,0 +1,33 @@
+.navbar {
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  padding: 10px 0; /* Padding superior e inferior */
+  border-bottom: 0.5px solid lightgray;
+}
+
+/* Ajusta el espacio entre el ícono y la etiqueta */
+.nav-link {
+  display: flex;
+  align-items: center; /* Alinea el ícono y el texto verticalmente */
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.nav-link i {
+  margin-right: 5px; /* Separación entre el ícono y la etiqueta */
+}
+
+/* Asegúrate de que los elementos del menú estén centrados */
+.navbar-nav {
+  display: flex;
+  justify-content: center; /* Centra los elementos del menú */
+  flex-wrap: nowrap; /* Evita el ajuste de línea */
+}
+
+.nav-item {
+  margin-right: 100px; /* Espacio a la derecha de cada ítem */
+}
+
+.nav-item:hover .nav-link {
+  transform: scale(1.2); /* Escala al pasar el ratón */
+}

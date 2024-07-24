@@ -1,0 +1,8 @@
+.content {
+    margin-left: 250px; /* Ajusta esto según el ancho de tu menú */
+    transition: margin-left 0.3s;
+}
+  
+.collapsed ~ .content {
+    margin-left: 60px;
+}

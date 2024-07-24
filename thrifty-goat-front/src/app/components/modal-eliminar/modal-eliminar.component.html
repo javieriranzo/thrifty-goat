@@ -1,0 +1,18 @@
+<!-- modal-eliminar.component.html -->
+<div class="modal" tabindex="-1" style="display: block; background: rgba(0,0,0,0.5);">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmar eliminación</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="onCancelar()"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ mensaje }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="onConfirmar()">Sí</button>
+        <button type="button" class="btn btn-danger" (click)="onCancelar()">No</button>
+      </div>
+    </div>
+  </div>
+</div>

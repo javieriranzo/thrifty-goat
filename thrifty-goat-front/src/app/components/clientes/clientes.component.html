@@ -1,0 +1,174 @@
+<div id="div_general" class="container mt-4">
+  <h1>Clientes</h1>
+  <div class="d-flex align-items-center mb-4 mt-4 flex-wrap">
+    <i class="fa fa-address-card me-2" aria-hidden="true"></i>
+    <h3 class="me-2">Añadir nuevo cliente</h3>
+  </div>
+  <div class="container mt-4">
+    <form #clientForm="ngForm">
+      <div class="row g-3">
+        <!-- Datos Personales -->
+        <div class="col-md-4">
+          <input placeholder="Nombre" type="text" id="nombre" name="nombre" class="form-control" required />
+        </div>
+        <div class="col-md-4">
+          <input placeholder="Apellidos" type="text" id="apellido" name="apellido" class="form-control" required />
+        </div>
+        <div class="col-md-4">
+          <input placeholder="DNI/CIF" type="text" id="dni" name="dni" class="form-control" required />
+        </div>
+        <!-- Datos Postales -->
+        <div class="col-md-3">
+          <input placeholder="País" type="text" id="pais" name="pais" class="form-control" />
+        </div>
+        <div class="col-md-3">
+          <input placeholder="Provincia" type="text" id="provincia" name="provincia" class="form-control" />
+        </div>
+        <div class="col-md-3">
+          <input placeholder="Código Postal" type="text" id="codigoPostal" name="codigoPostal" class="form-control" />
+        </div>
+        <div class="col-md-3">
+          <input placeholder="Ciudad / Población" type="text" id="ciudad" name="ciudad" class="form-control" />
+        </div>
+        <!-- Datos de Contacto -->
+        <div class="col-md-6">
+          <input placeholder="Email" type="email" id="email" name="email" class="form-control" required />
+        </div>
+        <div class="col-md-6">
+          <input placeholder="Teléfono" type="text" id="telefono" name="telefono" class="form-control" required />
+        </div>
+        <!-- Botones -->
+        <div class="row g-3">
+          <div class="col-md-4">
+            <button class="btn btn-success flex-fill me-2">
+              Añadir cliente
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+            <button class="btn btn-warning flex-fill me-2">
+              Limpiar campos
+              <i class="fa fa-ban" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="d-flex align-items-center mb-4 mt-4 flex-wrap">
+    <i class="fa fa-list me-2" aria-hidden="true"></i>
+    <h3 class="me-2">Registro clientes:</h3>
+  </div>
+
+  <div class="d-flex align-items-center mb-3 flex-wrap">
+    <select class="form-select me-2 mt-2 col-md-12" [(ngModel)]="selectedFilterCategory">
+      <option value="personales">Datos personales</option>
+      <option value="contacto">Datos de contacto</option>
+      <option value="postales">Datos postales</option>
+    </select>
+    <!-- Contenedor de Inputs de Filtrado -->
+    <div class="w-100">
+      <!-- Inputs de filtrado para datos personales -->
+      <ng-container *ngIf="selectedFilterCategory === 'personales'">
+        <div class="row g-2">
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="filter.nombre" />
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Apellidos" [(ngModel)]="filter.apellido" />
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="DNI" [(ngModel)]="filter.dni" />
+          </div>
+        </div>
+      </ng-container>
+      <!-- Inputs de filtrado para datos de contacto -->
+      <ng-container *ngIf="selectedFilterCategory === 'contacto'">
+        <div class="row g-2">
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Email" [(ngModel)]="filter.email" />
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Teléfono" [(ngModel)]="filter.telefono" />
+          </div>
+        </div>
+      </ng-container>
+      <!-- Inputs de filtrado para datos postales -->
+      <ng-container *ngIf="selectedFilterCategory === 'postales'">
+        <div class="row g-2">
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="País" [(ngModel)]="filter.pais" />
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Provincia" [(ngModel)]="filter.provincia" />
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Código postal" />
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <!-- Botones de aplicar y limpiar filtros -->
+    <div class="d-flex justify-content-between mt-3">
+      <button class="btn btn-primary flex-fill me-2">
+        Aplicar filtro
+        <i class="fa fa-filter" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn-warning flex-fill">
+        Limpiar campos
+        <i class="fa fa-ban" aria-hidden="true"></i>
+      </button>
+      <button class="btn btn-danger flex-fill">
+        Exportar a PDF
+        <i class="fa fa-file-pdf" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>DNI/CIF</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>País</th>
+        <th>Provincia</th>
+        <th>Ciudad</th>
+        <th>Código Postal</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ cliente.nombre }}</td>
+        <td>{{ cliente.apellidos }}</td>
+        <td>{{ cliente.dni }}</td>
+        <td>{{ cliente.email }}</td>
+        <td>{{ cliente.telefono }}</td>
+        <td>{{ cliente.pais }}</td>
+        <td>{{ cliente.provincia }}</td>
+        <td>{{ cliente.ciudad }}</td>
+        <td>{{ cliente.codigoPostal }}</td>
+        <td>
+          <button class="btn btn-warning btn-sm flex-grow-1">
+            Editar
+            <i class="fa fa-pencil me-2" aria-hidden="true"></i>
+          </button>
+          <button class="btn btn-danger btn-sm flex-grow-1" (click)="abrirModalEliminar(cliente)">
+            Eliminar
+            <i class="fa fa-trash me-2" aria-hidden="true"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-modal-eliminar 
+    *ngIf="showModal"
+    [mensaje]="'¿Está seguro que desea eliminar este cliente?'"
+    (confirmar)="eliminarCliente()"
+    (cancelar)="cerrarModal()">
+  </app-modal-eliminar>
+</div>

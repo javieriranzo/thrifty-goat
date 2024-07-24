@@ -1,0 +1,25 @@
+/* Estilos para el footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #343a40; /* Fondo gris oscuro */
+  color: #ffffff; /* Texto en blanco */
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px; /* Tamaño de letra reducido */
+  z-index: 1000; /* Asegura que el footer esté por encima de otros contenidos */
+}
+
+.footer-column {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  max-width: 1200px; /* Ancho máximo para centrar el contenido */
+  padding: 0 15px; /* Espaciado lateral */
+}
+
+.footer-column div {
+  margin: 0 20px;
+}
