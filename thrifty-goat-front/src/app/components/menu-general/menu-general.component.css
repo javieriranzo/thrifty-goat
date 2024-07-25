@@ -1,4 +1,8 @@
+/* menu-general.component.css */
+
+/* Estilo general para la barra de navegación */
 .navbar {
+  background-color: #343a40; /* Fondo del menú en color oscuro */
   display: flex;
   justify-content: center; /* Centra el contenido horizontalmente */
   padding: 10px 0; /* Padding superior e inferior */
@@ -9,12 +13,21 @@
 .nav-link {
   display: flex;
   align-items: center; /* Alinea el ícono y el texto verticalmente */
-  font-size: 20px;
-  transition: transform 0.3s ease;
+  font-size: 18px; /* Tamaño de fuente ajustado */
+  text-decoration: none; /* Quita el subrayado del texto */
+  color: #ffffff; /* Color de texto blanco */
+  transition: transform 0.3s ease, color 0.3s ease; /* Añadido transición de color */
 }
 
 .nav-link i {
-  margin-right: 5px; /* Separación entre el ícono y la etiqueta */
+  margin-right: 8px; /* Separación entre el ícono y la etiqueta */
+  font-size: 20px; /* Tamaño de íconos ajustado */
+}
+
+/* Cambia el color del texto y del ícono cuando el enlace está activo */
+.nav-link.active,
+.nav-link:hover {
+  color: yellow; /* Color del texto y del ícono en estado activo o al pasar el ratón */
 }
 
 /* Asegúrate de que los elementos del menú estén centrados */
@@ -22,12 +35,18 @@
   display: flex;
   justify-content: center; /* Centra los elementos del menú */
   flex-wrap: nowrap; /* Evita el ajuste de línea */
+  margin: 0; /* Elimina el margen por defecto */
+  padding: 0; /* Elimina el padding por defecto */
 }
 
 .nav-item {
-  margin-right: 100px; /* Espacio a la derecha de cada ítem */
+  margin: 0 20px; /* Espacio horizontal entre cada ítem ajustado */
+}
+
+.nav-item:last-child {
+  margin-right: 0; /* Elimina el margen derecho del último ítem */
 }
 
 .nav-item:hover .nav-link {
-  transform: scale(1.2); /* Escala al pasar el ratón */
+  transform: scale(1.1); /* Escala al pasar el ratón */
 }

@@ -6,6 +6,8 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { FacturacionComponent } from './components/facturacion/facturacion.component';
 import { CerrarSesionComponent } from './components/cerrar-sesion/cerrar-sesion.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ModalEditarClienteComponent } from './components/modal-editar-cliente/modal-editar-cliente.component';
+import { ModalEliminarComponent } from './components/modal-eliminar/modal-eliminar.component';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +22,8 @@ import { FooterComponent } from './components/footer/footer.component';
     FacturacionComponent,
     CerrarSesionComponent,
     FooterComponent,
+    ModalEditarClienteComponent,
+    ModalEliminarComponent
   ],
 })
 export class AppComponent {
