@@ -56,7 +56,6 @@ h5 {
 
 /* Ajuste del ancho de los campos del formulario */
 .form-control {
-  border-radius: 0.25rem; /* Bordes redondeados en los campos de formulario */
   margin-top: 0; /* Elimina el margen superior en campos de formulario */
   width: 100%; /* Hace que los campos ocupen el 100% del contenedor padre */
   box-sizing: border-box; /* Incluye el padding y border en el cálculo del ancho */
@@ -90,7 +89,6 @@ form .form-control::placeholder {
 
 /* Estilo para los encabezados de la tabla */
 .table thead th {
-  border-top: 2px solid black;
   background-color: lightgray; /* Color de fondo de los encabezados */
   color: black; /* Color del texto en los encabezados */
 }
