@@ -11,7 +11,7 @@
   </div>
 
   <!-- Formulario para añadir cliente -->
-  <div class="container mt-4">
+  <div class="d-flex align-items-center mb-3 flex-wrap">
     <form #clientForm="ngForm">
       <div class="row g-3">
         <!-- Datos Personales -->
@@ -139,7 +139,7 @@
   <!-- Filtros de búsqueda -->
   <div class="d-flex align-items-center mb-3 flex-wrap">
     <select 
-      class="form-select me-2" 
+      class="form-select me-2 mb-3"
       [(ngModel)]="selectedFilterCategory" 
       (change)="limpiarFiltros()"
     >

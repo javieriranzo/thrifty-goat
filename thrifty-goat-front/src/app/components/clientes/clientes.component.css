@@ -23,7 +23,13 @@
 .d-flex.align-items-center input,
 .d-flex.align-items-center button {
   margin-right: 10px; /* Espacio derecho */
-  margin-bottom: 10px; /* Espacio inferior */
+}
+
+/* Elimina el margin-bottom y margin-top de los inputs y el selector */
+.d-flex.align-items-center select,
+.d-flex.align-items-center input {
+  margin-bottom: 0; /* Elimina el margen inferior */
+  margin-top: 0; /* Elimina el margen superior */
 }
 
 /* Estilos para los campos de filtro y búsqueda */
@@ -48,10 +54,12 @@ h5 {
   margin-bottom: 10px; /* Espacio inferior reducido para los encabezados */
 }
 
-/* Ajuste de los campos del formulario en una fila */
+/* Ajuste del ancho de los campos del formulario */
 .form-control {
   border-radius: 0.25rem; /* Bordes redondeados en los campos de formulario */
   margin-top: 0; /* Elimina el margen superior en campos de formulario */
+  width: 100%; /* Hace que los campos ocupen el 100% del contenedor padre */
+  box-sizing: border-box; /* Incluye el padding y border en el cálculo del ancho */
 }
 
 form .form-control:focus {
@@ -90,4 +98,17 @@ form .form-control::placeholder {
 /* Espaciado entre botones */
 .d-flex button {
   margin: 0 5px; /* Espacio horizontal entre los botones */
+}
+
+/* Alineación de los botones en la tabla y formulario */
+.d-flex.justify-content-start button {
+  margin-right: 5px; /* Espacio derecho entre los botones alineados a la izquierda */
+}
+
+.d-flex.justify-content-end button {
+  margin-left: 5px; /* Espacio izquierdo entre los botones alineados a la derecha */
+}
+
+.d-flex.justify-content-between {
+  justify-content: space-between; /* Espacio entre los botones alinea a la izquierda y a la derecha */
 }
