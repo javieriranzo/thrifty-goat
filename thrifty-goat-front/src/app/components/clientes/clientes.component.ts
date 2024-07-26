@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { Cliente } from '../../models/cliente.model';
 import { ModalEliminarComponent } from '../modal-eliminar/modal-eliminar.component';
 import { ModalEditarClienteComponent } from '../modal-editar-cliente/modal-editar-cliente.component';
-import { SelectorPrefijosPaisesComponent } from '../selector-prefijos-paises/selector-prefijos-paises.component';
 
 @Component({
   selector: 'app-clientes',
