@@ -89,7 +89,6 @@ export class ClientesComponent {
   }
 
   cerrarModalEditar() {
-    console.log('Closing edit modal');
     this.showModalEditar = false;
   }
 

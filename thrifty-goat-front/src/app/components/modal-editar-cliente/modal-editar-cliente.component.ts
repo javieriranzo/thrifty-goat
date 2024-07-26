@@ -15,21 +15,14 @@ export class ModalEditarClienteComponent {
   @Output() clienteActualizado = new EventEmitter<Cliente>();
   @Output() modalCerrar = new EventEmitter<void>();
 
-  ngOnChanges() {
-    console.log('Modal component changes');
-    console.log('Cliente recibido:', this.cliente);
-  }
-
   guardarCambios() {
     if (this.cliente) {
-      console.log('Saving changes');
       this.clienteActualizado.emit(this.cliente);
       this.modalCerrar.emit();
     }
   }
 
   cerrarModal() {
-    console.log('Closing modal');
     this.modalCerrar.emit();
   }
 }
