@@ -1,7 +1,8 @@
 export interface Direccion {
+    id: number;
     direccion:String;
     ciudad:String;
     provincia:String;
-    codigoPostal:String;
+    codigo_postal:String;
     pais:String; 
 }
