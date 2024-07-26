@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Cliente } from '../../models/cliente.model';
 import { ModalEliminarComponent } from '../modal-eliminar/modal-eliminar.component';
 import { ModalEditarClienteComponent } from '../modal-editar-cliente/modal-editar-cliente.component';
+import { SelectorPrefijosPaisesComponent } from '../selector-prefijos-paises/selector-prefijos-paises.component';
 
 @Component({
   selector: 'app-clientes',
@@ -14,10 +15,86 @@ import { ModalEditarClienteComponent } from '../modal-editar-cliente/modal-edita
 })
 
 export class ClientesComponent {
+  
+  clientes: Cliente[] = [
+    {
+      id: 1,
+      nombre: 'Juan',
+      apellidos: 'Perez',
+      dni: '44852146Z',
+      email: 'juan.perez@example.com',
+      telefono: '123456789',
+      direccion: 'Calle Conde Altea, 16',
+      ciudad: 'Valencia',
+      provincia: 'Valencia',
+      codigoPostal: '46135',
+      pais: 'España'
+    },
+    {
+      id: 2,
+      nombre: 'Javier',
+      apellidos: 'Iranzo',
+      dni: '45910615Q',
+      email: 'javier.iranzo@example.com',
+      telefono: '666305652',
+      direccion: 'Calle Gran Vía, 18',
+      ciudad: 'Valencia',
+      provincia: 'Valencia',
+      codigoPostal: '46135',
+      pais: 'España'
+    },
+  ];
 
-  showModal = false;
+
+  /* Eliminado de cliente */
+
+  clienteSeleccionado: Cliente | null = null;
+  showModalEliminar = false;
+
+  eliminarCliente() {
+    this.clientes = this.clientes.filter(c => c !== this.clienteSeleccionado);
+    this.clienteSeleccionado = {} as Cliente; // Resetear cliente seleccionado
+    this.cerrarModalEliminar();
+  }
+
+  /* Modal eliminado de cliente */
+
+  abrirModalEliminar(cliente: Cliente) {
+    this.clienteSeleccionado = cliente;
+    this.showModalEliminar = true;
+  }
+
+  cerrarModalEliminar() {
+    this.showModalEliminar = false;
+  }
+
+  /* Editado de cliente */ 
+
+  clienteActualizado: Cliente | null = null;
   showModalEditar = false;
-  selectedFilterCategory = 'personales';
+
+  actualizarCliente(clienteActualizado: Cliente) {
+    const index = this.clientes.findIndex(c => c.id === clienteActualizado.id);
+    if (index !== -1) {
+      this.clientes[index] = clienteActualizado;
+      this.filterClientes();
+    }
+    this.cerrarModalEditar();
+  }
+
+  /* Modal editado de cliente */
+
+  abrirModalEditar(cliente: Cliente) {
+    this.clienteSeleccionado = cliente;
+    this.showModalEditar = true;
+  }
+
+  cerrarModalEditar() {
+    console.log('Closing edit modal');
+    this.showModalEditar = false;
+  }
+
+  /* Filtrado de clientes */
 
   filter = {
     nombre: '',
@@ -31,60 +108,13 @@ export class ClientesComponent {
     codigoPostal: ''
   };
 
-  clientes: Cliente[] = [
-    {
-      id: 1,
-      nombre: 'Juan',
-      apellidos: 'Perez',
-      dni: '44852146Z',
-      email: 'juan.perez@example.com',
-      telefono: '123456789',
-      pais: 'España',
-      provincia: 'Valencia',
-      ciudad: 'Valencia',
-      codigoPostal: '46135'
-    },
-    {
-      id: 2,
-      nombre: 'Javier',
-      apellidos: 'Iranzo',
-      dni: '45910615Q',
-      email: 'javier.iranzo@example.com',
-      telefono: '666305652',
-      pais: 'España',
-      provincia: 'Valencia',
-      ciudad: 'Albalat dels Sorells',
-      codigoPostal: '46135'
-    },
-  ];
-
-  clienteSeleccionado: Cliente | null = null;
-
-  ngOnInit() {
-    console.log('Component initialized');
-    console.log('Clientes:', this.clientes);
-  }
-
-  abrirModalEliminar(cliente: Cliente) {
-    this.clienteSeleccionado = cliente;
-    this.showModal = true;
-  }
-
-  eliminarCliente() {
-    this.clientes = this.clientes.filter(c => c !== this.clienteSeleccionado);
-    this.clienteSeleccionado = {} as Cliente; // Resetear cliente seleccionado
-    this.cerrarModal();
-  }
-
-  cerrarModal() {
-    this.showModal = false;
-  }
-
   filteredClientes: Cliente[] = [];
 
   constructor() {
     this.filteredClientes = this.clientes;
   }
+
+  selectedFilterCategory = 'personales';
 
   limpiarFiltros() {
     this.filter = {
@@ -116,29 +146,6 @@ export class ClientesComponent {
       return nombreMatch && apellidoMatch && dniMatch && emailMatch && telefonoMatch &&
              paisMatch && provinciaMatch && ciudadMatch && codigoPostalMatch;
     });
-  }
-
-  abrirModalEditar(cliente: Cliente) {
-    console.log('Opening edit modal');
-    console.log('Cliente a editar:', cliente);
-    this.clienteSeleccionado = cliente;
-    this.showModalEditar = true;
-  }
-
-  actualizarCliente(clienteActualizado: Cliente) {
-    console.log('Updating client');
-    console.log('Cliente actualizado:', clienteActualizado);
-    const index = this.clientes.findIndex(c => c.id === clienteActualizado.id);
-    if (index !== -1) {
-      this.clientes[index] = clienteActualizado;
-      this.filterClientes();
-    }
-    this.cerrarModalEditar();
-  }
-
-  cerrarModalEditar() {
-    console.log('Closing edit modal');
-    this.showModalEditar = false;
   }
 
 }

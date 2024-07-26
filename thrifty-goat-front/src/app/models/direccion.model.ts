@@ -1,6 +1,7 @@
 export interface Direccion {
-    pais:String; 
+    direccion:String;
+    ciudad:String;
     provincia:String;
     codigoPostal:String;
-    ciudad:String;
+    pais:String; 
 }

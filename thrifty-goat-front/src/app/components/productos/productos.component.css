@@ -1,0 +1,68 @@
+/* Contenedor principal */
+#div_general {
+    margin-bottom: 100px; /* Espacio en la parte inferior del contenedor */
+  }
+  
+  /* Estilo para el título principal y subtítulos */
+  h1, h3 {
+    margin-bottom: 10px; /* Espacio inferior para los encabezados */
+  }
+  
+  /* Estilo para el formulario */
+  form .form-control {
+    border-radius: 0.25rem; /* Bordes redondeados en los campos de formulario */
+    margin-top: 0; /* Elimina el margen superior en campos de formulario */
+    width: 100%; /* Hace que los campos ocupen el 100% del contenedor padre */
+    box-sizing: border-box; /* Incluye el padding y border en el cálculo del ancho */
+  }
+  
+  /* Estilo para los labels del formulario */
+  .form-label {
+    margin-bottom: 0.5rem; /* Espacio inferior para los labels */
+  }
+  
+  /* Espaciado entre filas y columnas del formulario */
+  .row {
+    margin-bottom: 0px; /* Elimina el margen inferior entre las filas de formulario */
+  }
+  
+  .row .col-md-12 {
+    margin-bottom: 0px; /* Espacio inferior entre columnas */
+  }
+  
+  /* Estilo para el contenedor de la moneda */
+  .input-container {
+    position: relative;
+  }
+  
+  .currency-symbol {
+    position: absolute;
+    top: 50%;
+    left: 120px; /* Ajusta este valor según sea necesario */
+    transform: translateY(-50%);
+    font-size: 16px; /* Ajusta el tamaño de la fuente según sea necesario */
+    color: #333; /* Color del símbolo */
+  }
+  
+  .currency-input {
+    padding-left: 30px; /* Deja espacio para el símbolo */
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total del input */
+    font-size: 16px; /* Tamaño de la fuente del input */
+  }
+  
+  /* Botones */
+  .btn-success, .btn-warning {
+    margin: 0px; /* Espacio horizontal entre los botones */
+  }
+  
+  /* Selector de categoría */
+  .selector-container {
+    position: relative;
+  }
+  
+  .selector-container .form-select {
+    width: 100%; /* Asegura que el selector ocupa el 100% del contenedor */
+    box-sizing: border-box; /* Incluye padding y border en el cálculo del ancho */
+  }
+  
+  

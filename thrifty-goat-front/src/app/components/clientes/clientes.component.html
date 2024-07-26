@@ -1,6 +1,5 @@
 <!-- clientes.component.html -->
 <div id="div_general" class="container mt-4">
-
   <!-- Título principal -->
   <h1>Clientes</h1>
 
@@ -16,109 +15,175 @@
       <div class="row g-3">
         <!-- Datos Personales -->
         <div class="col-md-4">
-          <input 
-            placeholder="Nombre" 
-            type="text" 
-            id="nombre" 
-            name="nombre" 
-            class="form-control" 
-            required 
+          <input
+            placeholder="Nombre"
+            type="text"
+            id="nombre"
+            name="nombre"
+            class="form-control"
+            required
           />
         </div>
         <div class="col-md-4">
-          <input 
-            placeholder="Apellidos" 
-            type="text" 
-            id="apellido" 
-            name="apellido" 
-            class="form-control" 
-            required 
+          <input
+            placeholder="Apellidos"
+            type="text"
+            id="apellido"
+            name="apellido"
+            class="form-control"
+            required
           />
         </div>
         <div class="col-md-4">
-          <input 
-            placeholder="DNI/CIF" 
-            type="text" 
-            id="dni" 
-            name="dni" 
-            class="form-control" 
-            required 
+          <input
+            placeholder="DNI/CIF"
+            type="text"
+            id="dni"
+            name="dni"
+            class="form-control"
+            required
           />
         </div>
-
         <!-- Datos Postales -->
-        <div class="col-md-3">
-          <input 
-            placeholder="País" 
-            type="text" 
-            id="pais" 
-            name="pais" 
-            class="form-control" 
+        <div class="col-md-6">
+          <input
+            placeholder="Direccion"
+            type="text"
+            id="direccion"
+            name="direccion"
+            class="form-control"
           />
         </div>
-        <div class="col-md-3">
-          <input 
-            placeholder="Provincia" 
-            type="text" 
-            id="provincia" 
-            name="provincia" 
-            class="form-control" 
+        <div class="col-md-6">
+          <input
+            placeholder="Ciudad / Población"
+            type="text"
+            id="ciudad"
+            name="ciudad"
+            class="form-control"
           />
         </div>
-        <div class="col-md-3">
-          <input 
-            placeholder="Código Postal" 
-            type="text" 
-            id="codigoPostal" 
-            name="codigoPostal" 
-            class="form-control" 
+        <div class="col-md-4">
+          <input
+            placeholder="Código Postal"
+            type="text"
+            id="codigoPostal"
+            name="codigoPostal"
+            class="form-control"
           />
         </div>
-        <div class="col-md-3">
-          <input 
-            placeholder="Ciudad / Población" 
-            type="text" 
-            id="ciudad" 
-            name="ciudad" 
-            class="form-control" 
+        <div class="col-md-4">
+          <input
+            placeholder="Provincia"
+            type="text"
+            id="provincia"
+            name="provincia"
+            class="form-control"
           />
         </div>
-
+        <div class="col-md-4">
+          <input
+            placeholder="País"
+            type="text"
+            id="pais"
+            name="pais"
+            class="form-control"
+          />
+        </div>
         <!-- Datos de Contacto -->
         <div class="col-md-6">
-          <input 
-            placeholder="Email" 
-            type="email" 
-            id="email" 
-            name="email" 
-            class="form-control" 
-            required 
+          <input
+            placeholder="Email"
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            required
           />
         </div>
-        <div class="col-md-6">
-          <input 
-            placeholder="Teléfono" 
-            type="text" 
-            id="telefono" 
-            name="telefono" 
-            class="form-control" 
-            required 
+        <div class="col-md-2">
+          <div class="selector-container">
+            <select id="country-prefix" class="form-select">
+              <option value="+34" selected>🇪🇸 +34 - (España)</option>
+              <option value="+1">🇺🇸 +1 - (Estados Unidos)</option>
+              <option value="+1">🇨🇦 +1 - (Canadá)</option>
+              <option value="+44">🇬🇧 +44 - (Reino Unido)</option>
+              <option value="+49">🇩🇪 +49 - (Alemania)</option>
+              <option value="+33">🇫🇷 +33 - (Francia)</option>
+              <option value="+91">🇮🇳 +91 - (India)</option>
+              <option value="+86">🇨🇳 +86 - (China)</option>
+              <option value="+81">🇯🇵 +81 - (Japón)</option>
+              <option value="+61">🇦🇺 +61 - (Australia)</option>
+              <option value="+55">🇧🇷 +55 - (Brasil)</option>
+              <option value="+7">🇷🇺 +7 - (Rusia)</option>
+              <option value="+82">🇰🇷 +82 - (Corea del Sur)</option>
+              <option value="+39">🇮🇹 +39 - (Italia)</option>
+              <option value="+52">🇲🇽 +52 - (México)</option>
+              <option value="+62">🇮🇩 +62 - (Indonesia)</option>
+              <option value="+27">🇿🇦 +27 - (Sudáfrica)</option>
+              <option value="+234">🇳🇬 +234 - (Nigeria)</option>
+              <option value="+90">🇹🇷 +90 - (Turquía)</option>
+              <option value="+31">🇳🇱 +31 - (Países Bajos)</option>
+              <option value="+41">🇨🇭 +41 - (Suiza)</option>
+              <option value="+46">🇸🇪 +46 - (Suecia)</option>
+              <option value="+47">🇳🇴 +47 - (Noruega)</option>
+              <option value="+48">🇵🇱 +48 - (Polonia)</option>
+              <option value="+64">🇳🇿 +64 - (Nueva Zelanda)</option>
+              <option value="+65">🇸🇬 +65 - (Singapur)</option>
+              <option value="+66">🇹🇭 +66 - (Tailandia)</option>
+              <option value="+63">🇵🇭 +63 - (Filipinas)</option>
+              <option value="+60">🇲🇾 +60 - (Malasia)</option>
+              <option value="+32">🇧🇪 +32 - (Bélgica)</option>
+              <option value="+45">🇩🇰 +45 - (Dinamarca)</option>
+              <option value="+30">🇬🇷 +30 - (Grecia)</option>
+              <option value="+351">🇵🇹 +351 - (Portugal)</option>
+              <option value="+380">🇺🇦 +380 - (Ucrania)</option>
+              <option value="+371">🇱🇻 +371 - (Letonia)</option>
+              <option value="+372">🇪🇪 +372 - (Estonia)</option>
+              <option value="+375">🇧🇾 +375 - (Bielorrusia)</option>
+              <option value="+385">🇭🇷 +385 - (Croacia)</option>
+              <option value="+386">🇸🇮 +386 - (Eslovenia)</option>
+              <option value="+387">🇧🇦 +387 - (Bosnia y Herzegovina)</option>
+              <option value="+370">🇱🇹 +370 - (Lituania)</option>
+              <option value="+381">🇷🇸 +381 - (Serbia)</option>
+              <option value="+421">🇸🇰 +421 - (Eslovaquia)</option>
+              <option value="+420">🇨🇿 +420 - (Chequia)</option>
+              <option value="+40">🇷🇴 +40 - (Rumanía)</option>
+              <option value="+43">🇦🇹 +43 - (Austria)</option>
+              <option value="+358">🇫🇮 +358 - (Finlandia)</option>
+              <option value="+373">🇲🇩 +373 - (Moldavia)</option>
+              <option value="+374">🇦🇲 +374 - (Armenia)</option>
+              <option value="+376">🇦🇩 +376 - (Andorra)</option>
+              <option value="+377">🇲🇨 +377 - (Mónaco)</option>
+              <option value="+378">🇸🇲 +378 - (San Marino)</option>
+              <option value="+379">🇻🇦 +379 - (Vaticano)</option>
+              <option value="+382">🇲🇪 +382 - (Montenegro)</option>
+              <option value="+383">🇽🇰 +383 - (Kosovo)</option>
+              <option value="+389">🇲🇰 +389 - (Macedonia del Norte)</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <input
+            placeholder="Teléfono"
+            type="text"
+            id="telefono"
+            name="telefono"
+            class="form-control"
+            required
           />
         </div>
 
         <!-- Botones -->
         <div class="col-12 mt-4">
           <div class="d-flex justify-content-start gap-2">
-            <button 
-              class="btn btn-success" 
-              type="submit"
-            >
+            <button class="btn btn-success" type="submit">
               Añadir cliente
               <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
-            <button 
-              class="btn btn-warning" 
-              type="button" 
+            <button
+              class="btn btn-warning"
+              type="button"
               (click)="limpiarFiltros()"
             >
               Limpiar campos
@@ -133,14 +198,14 @@
   <!-- Filtros de Clientes -->
   <div class="d-flex align-items-center mb-4 mt-4 flex-wrap">
     <i class="fa fa-list me-2" aria-hidden="true"></i>
-    <h3 class="me-2">Registro clientes:</h3>
+    <h3 class="me-2">Registro de clientes:</h3>
   </div>
 
   <!-- Filtros de búsqueda -->
   <div class="d-flex align-items-center mb-3 flex-wrap">
-    <select 
-      class="form-select me-2 mb-3"
-      [(ngModel)]="selectedFilterCategory" 
+    <select
+      class="form-select me-2 mb-3 col-md-12"
+      [(ngModel)]="selectedFilterCategory"
       (change)="limpiarFiltros()"
     >
       <option value="personales">Datos personales</option>
@@ -154,49 +219,49 @@
       <ng-container *ngIf="selectedFilterCategory === 'personales'">
         <div class="row g-2">
           <div class="col-md-4">
-            <input 
-              type="text" 
-              class="form-control" 
-              placeholder="Nombre" 
-              [(ngModel)]="filter.nombre" 
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Nombre"
+              [(ngModel)]="filter.nombre"
             />
           </div>
           <div class="col-md-4">
-            <input 
-              type="text" 
-              class="form-control" 
-              placeholder="Apellidos" 
-              [(ngModel)]="filter.apellido" 
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Apellidos"
+              [(ngModel)]="filter.apellido"
             />
           </div>
           <div class="col-md-4">
-            <input 
-              type="text" 
-              class="form-control" 
-              placeholder="DNI" 
-              [(ngModel)]="filter.dni" 
+            <input
+              type="text"
+              class="form-control"
+              placeholder="DNI"
+              [(ngModel)]="filter.dni"
             />
           </div>
         </div>
       </ng-container>
-      
+
       <!-- Inputs de filtrado para datos de contacto -->
       <ng-container *ngIf="selectedFilterCategory === 'contacto'">
         <div class="row g-2">
           <div class="col-md-6">
-            <input 
-              type="text" 
-              class="form-control" 
-              placeholder="Email" 
-              [(ngModel)]="filter.email" 
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Email"
+              [(ngModel)]="filter.email"
             />
           </div>
           <div class="col-md-6">
-            <input 
-              type="text" 
-              class="form-control" 
-              placeholder="Teléfono" 
-              [(ngModel)]="filter.telefono" 
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Teléfono"
+              [(ngModel)]="filter.telefono"
             />
           </div>
         </div>
@@ -206,27 +271,27 @@
       <ng-container *ngIf="selectedFilterCategory === 'postales'">
         <div class="row g-2">
           <div class="col-md-4">
-            <input 
-              type="text" 
-              class="form-control" 
-              placeholder="País" 
-              [(ngModel)]="filter.pais" 
+            <input
+              type="text"
+              class="form-control"
+              placeholder="País"
+              [(ngModel)]="filter.pais"
             />
           </div>
           <div class="col-md-4">
-            <input 
-              type="text" 
-              class="form-control" 
-              placeholder="Provincia" 
-              [(ngModel)]="filter.provincia" 
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Provincia"
+              [(ngModel)]="filter.provincia"
             />
           </div>
           <div class="col-md-4">
-            <input 
-              type="text" 
-              class="form-control" 
-              placeholder="Código postal" 
-              [(ngModel)]="filter.codigoPostal" 
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Código postal"
+              [(ngModel)]="filter.codigoPostal"
             />
           </div>
         </div>
@@ -235,23 +300,15 @@
 
     <!-- Botones de aplicar y limpiar filtros -->
     <div class="d-flex justify-content-between mt-3">
-      <button 
-        class="btn btn-primary" 
-        (click)="filterClientes()"
-      >
+      <button class="btn btn-primary" (click)="filterClientes()">
         Aplicar filtro
         <i class="fa fa-filter" aria-hidden="true"></i>
       </button>
-      <button 
-        class="btn btn-warning" 
-        (click)="limpiarFiltros()"
-      >
+      <button class="btn btn-warning" (click)="limpiarFiltros()">
         Limpiar campos
         <i class="fa fa-ban" aria-hidden="true"></i>
       </button>
-      <button 
-        class="btn btn-danger"
-      >
+      <button class="btn btn-danger">
         Exportar a PDF
         <i class="fa fa-file-pdf" aria-hidden="true"></i>
       </button>
@@ -288,15 +345,15 @@
         <td>{{ cliente.ciudad }}</td>
         <td>{{ cliente.codigoPostal }}</td>
         <td>
-          <button 
-            class="btn btn-warning me-2 mt-2" 
+          <button
+            class="btn btn-warning me-2 mt-2"
             (click)="abrirModalEditar(cliente)"
           >
             Editar
             <i class="fa fa-pencil me-2" aria-hidden="true"></i>
           </button>
-          <button 
-            class="btn btn-danger me-2 mt-2" 
+          <button
+            class="btn btn-danger me-2 mt-2"
             (click)="abrirModalEliminar(cliente)"
           >
             Eliminar
@@ -308,17 +365,17 @@
   </table>
 
   <!-- Modales -->
-  <app-modal-eliminar 
-    *ngIf="showModal"
+  <app-modal-eliminar
+    *ngIf="showModalEliminar"
     [mensaje]="'¿Está seguro que desea eliminar el cliente?'"
     (confirmar)="eliminarCliente()"
-    (cancelar)="cerrarModal()"
+    (cancelar)="cerrarModalEliminar()"
   ></app-modal-eliminar>
 
-  <app-modal-editar-cliente 
-    *ngIf="showModalEditar" 
-    [cliente]="clienteSeleccionado" 
-    (clienteActualizado)="actualizarCliente($event)" 
+  <app-modal-editar-cliente
+    *ngIf="showModalEditar"
+    [cliente]="clienteSeleccionado"
+    (clienteActualizado)="actualizarCliente($event)"
     (modalCerrar)="cerrarModalEditar()"
   ></app-modal-editar-cliente>
 </div>

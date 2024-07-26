@@ -4,6 +4,7 @@ import { MenuGeneralComponent } from './components/menu-general/menu-general.com
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { FacturacionComponent } from './components/facturacion/facturacion.component';
+import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { CerrarSesionComponent } from './components/cerrar-sesion/cerrar-sesion.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ModalEditarClienteComponent } from './components/modal-editar-cliente/modal-editar-cliente.component';
@@ -20,6 +21,7 @@ import { ModalEliminarComponent } from './components/modal-eliminar/modal-elimin
     ClientesComponent,
     ProductosComponent,
     FacturacionComponent,
+    PedidosComponent,
     CerrarSesionComponent,
     FooterComponent,
     ModalEditarClienteComponent,
