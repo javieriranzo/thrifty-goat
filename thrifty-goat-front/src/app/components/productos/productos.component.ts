@@ -37,7 +37,8 @@ export class ProductosComponent {
     nombre_producto: '',
     descripcion_producto: '',
     precio:'',
-    nombre_categoria: ''
+    nombre_categoria: '',
+    descripcion_categoria: ''
   };
 
   filteredProductos: Producto[] = [];
@@ -53,7 +54,8 @@ export class ProductosComponent {
       nombre_producto: '',
       descripcion_producto: '',
       precio:'',
-      nombre_categoria: ''
+      nombre_categoria: '',
+      descripcion_categoria: ''
     };
     this.filterProductos(); // Actualizar la lista de productos filtrados después de limpiar los filtros
   }
@@ -64,8 +66,9 @@ export class ProductosComponent {
       const nombreProductoMatch = producto.nombre_producto.toLowerCase().includes(this.filter.nombre_producto.toLowerCase());
       const descripcionProductoMatch = producto.descripcion_producto.toLowerCase().includes(this.filter.descripcion_producto.toLowerCase());
       const precioProductoMatch = producto.precio.toString().includes(this.filter.precio.toString());
+      const descripcionCategoriaMatch = producto.descripcion_categoria.toLowerCase().includes(this.filter.descripcion_categoria.toLowerCase());
 
-      return nombreCategoriaProductoMatch && nombreProductoMatch && descripcionProductoMatch && precioProductoMatch 
+      return nombreCategoriaProductoMatch && nombreProductoMatch && descripcionProductoMatch && precioProductoMatch && descripcionCategoriaMatch
     });
   }
 

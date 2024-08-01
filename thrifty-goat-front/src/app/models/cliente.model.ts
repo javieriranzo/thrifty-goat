@@ -1,11 +1,12 @@
-import { Direccion } from "./direccion.model";
+import { Direccion } from './direccion.model';
 
-export interface Cliente extends Direccion{
+export interface Cliente {
     id: number;
-    nombre: String;
-    apellidos: String;
-    dni: String;
-    email: String;
-    prefijo_pais: String;
-    telefono: String;
+    nombre: string;
+    apellidos: string;
+    dni: string;
+    email: string;
+    prefijo_pais?: string;
+    telefono: string;
+    direccion: Direccion;
 }

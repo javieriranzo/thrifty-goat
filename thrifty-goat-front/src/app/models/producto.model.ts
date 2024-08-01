@@ -1,8 +1,9 @@
-import { CategoriaProducto } from "./categoria-producto.model";
+import { Categoria } from './categoria.model';
 
-export interface Producto extends CategoriaProducto {
+export interface Producto {
     id: number;
-    nombre_producto: String;
-    descripcion_producto: String;
-    precio: number; 
+    categoria: Categoria;
+    nombre_producto: string;
+    descripcion_producto: string;
+    precio: number;
 }
